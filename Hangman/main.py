@@ -1,12 +1,14 @@
-import json
+import json, sys
 from random import choice
 
 # ვხსნით ფაილს და ვკითხულობთ მის შიგთავსს. 
+path = "IT_STEP_Midterm/Hangman/data.json"
 try:
-    with open("IT_STEP_Midterm/Hangman/data.json", mode="r", encoding="utf-8") as file:
+    with open(path, mode="r", encoding="utf-8") as file:
         data = json.load(file)
 except FileNotFoundError: # error-ის დაამუშავება
-    raise FileNotFoundError("Error: File not found.")
+    print(f"Error: {path} File not found.")
+    sys.exit()
 
 # ფუნქცია, რომელიც მომხმარებელს სთხოვს თამაშის სირთულის არჩევას. იმის მიხედვით თუ რა სირთულეს აირჩევს მომხმარებელი, აბრუნებს ცდების რაოდენობას
 def choose_game_mode():
